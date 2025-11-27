@@ -1,0 +1,218 @@
+/* Juju Baby Tracker - Alt Privacy Page Styles (style2.css) */
+
+:root {
+  --bg: #050816;
+  --bg-soft: #0b1020;
+  --card: #0f172a;
+  --accent: #86b39b; /* juju sage */
+  --accent-soft: rgba(134, 179, 155, 0.14);
+  --accent-strong: #9fd1b2;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border-soft: rgba(148, 163, 184, 0.4);
+  --shadow-soft: 0 24px 40px rgba(0, 0, 0, 0.55);
+  --radius-xl: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px 14px 40px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, #1f2937 0, #020617 42%, #000000 100%),
+    var(--bg);
+  color: var(--text-main);
+}
+
+.wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.shell {
+  position: relative;
+}
+
+.shell::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 30px;
+  background: radial-gradient(circle at 0% 0%, #22c55e 0, transparent 55%),
+    radial-gradient(circle at 100% 0%, #38bdf8 0, transparent 55%),
+    radial-gradient(circle at 0% 100%, #a855f7 0, transparent 50%);
+  opacity: 0.28;
+  filter: blur(12px);
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  border-radius: 26px;
+  background: radial-gradient(circle at top, #111827 0, #020617 75%);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: var(--shadow-soft);
+  padding: 26px 18px 22px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 48px 20px 60px;
+  }
+
+  .card {
+    padding: 30px 32px 26px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.logo-pill {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 20%, #ffffff 0, #e5f5eb 45%, #86b39b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
+  font-size: 24px;
+}
+
+.logo-pill span {
+  display: block;
+  transform: translateY(1px);
+}
+
+.title-block h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.title-block p {
+  margin: 4px 0 0;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.18);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent-strong);
+}
+
+.breadcrumb {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.breadcrumb a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  margin-top: 6px;
+  line-height: 1.58;
+}
+
+.content h2 {
+  font-size: 1.12rem;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+.content h3 {
+  font-size: 1rem;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+.content p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin: 3px 0 8px;
+}
+
+.content ul {
+  padding-left: 20px;
+  margin: 4px 0 10px;
+}
+
+.content li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.callout {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px dashed var(--border-soft);
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.callout strong {
+  color: var(--accent-strong);
+}
+
+.footer {
+  margin-top: 18px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
