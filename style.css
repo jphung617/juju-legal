@@ -1,19 +1,23 @@
-/* Juju Baby Tracker - Unified Legal/Support Styles (Dark Juju Theme) */
+/* Juju Baby Tracker - Unified Legal/Support Styles (Light Juju Theme) */
 
+/* ---------- COLOR TOKENS (from app theme) ---------- */
 :root {
-  --bg: #050816;
-  --bg-soft: #0b1020;
-  --card: #0f172a;
-  --accent: #86b39b; /* juju sage */
-  --accent-soft: rgba(134, 179, 155, 0.14);
-  --accent-strong: #9fd1b2;
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border-soft: rgba(148, 163, 184, 0.4);
-  --shadow-soft: 0 24px 40px rgba(0, 0, 0, 0.55);
+  --bg: #d9e6d9;              /* screen background (sage green) */
+  --card-bg: #ffffff;         /* card background */
+  --card-border: #c8e6c9;     /* pastel sage border */
+  --text-main: #1b5e20;       /* primary dark green text */
+  --text-muted: rgba(46, 125, 50, 0.7); /* medium green at 70% */
+  --accent: #675746;          /* brown/tan accent */
+  --accent-soft: #f3ebe1;     /* soft tan background */
+  --accent-gold: #eecb86;     /* golden highlight */
+  --accent-header: #8da68d;   /* sage headers */
+  --timer-bg: #9bb99b;        /* darker sage (for chips/labels) */
+
+  --shadow-soft: 0 18px 32px rgba(0, 0, 0, 0.06);
   --radius-xl: 20px;
 }
 
+/* ---------- GLOBAL RESET ---------- */
 *,
 *::before,
 *::after {
@@ -26,10 +30,11 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at top, #1f2937 0, #020617 42%, #000000 100%),
-    var(--bg);
+    radial-gradient(circle at top, #e6f0e6 0, var(--bg) 45%, #edf7ed 100%);
   color: var(--text-main);
 }
+
+/* ---------- LAYOUT ---------- */
 
 .wrapper {
   max-width: 980px;
@@ -40,27 +45,29 @@ body {
   position: relative;
 }
 
+/* subtle soft glow around the card */
 .shell::before {
   content: "";
   position: absolute;
   inset: -2px;
-  border-radius: 30px;
-  background: radial-gradient(circle at 0% 0%, #22c55e 0, transparent 55%),
-    radial-gradient(circle at 100% 0%, #38bdf8 0, transparent 55%),
-    radial-gradient(circle at 0% 100%, #a855f7 0, transparent 50%);
-  opacity: 0.28;
-  filter: blur(12px);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(237, 203, 134, 0.35) 0, transparent 55%),
+    radial-gradient(circle at 100% 0%, rgba(141, 166, 141, 0.25) 0, transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(200, 230, 201, 0.4) 0, transparent 50%);
+  opacity: 0.8;
+  filter: blur(10px);
   z-index: 0;
 }
 
 .card {
   position: relative;
   z-index: 1;
-  border-radius: 26px;
-  background: radial-gradient(circle at top, #111827 0, #020617 75%);
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   box-shadow: var(--shadow-soft);
-  padding: 26px 18px 22px;
+  padding: 22px 18px 20px;
 }
 
 @media (min-width: 768px) {
@@ -69,11 +76,17 @@ body {
   }
 
   .card {
-    padding: 30px 32px 26px;
+    padding: 28px 30px 24px;
   }
 }
 
-/* Header / logo */
+/* For inner content pages (support/privacy/terms) */
+.inner-page {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER / LOGO ---------- */
 
 .header {
   display: flex;
@@ -87,12 +100,13 @@ body {
   height: 52px;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 30% 20%, #ffffff 0, #e5f5eb 45%, #86b39b 100%);
+    radial-gradient(circle at 30% 20%, #ffffff 0, #f6fbf6 45%, #c8e6c9 85%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
-  font-size: 24px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+  font-size: 26px;
+  color: var(--accent);
 }
 
 .logo-pill span {
@@ -103,6 +117,7 @@ body {
 .title-block h1 {
   font-size: 1.5rem;
   margin: 0;
+  color: var(--accent);
 }
 
 .title-block p {
@@ -111,7 +126,22 @@ body {
   color: var(--text-muted);
 }
 
-/* Badges */
+/* Inner page header */
+
+.inner-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.inner-header-title {
+  font-size: 1.35rem;
+  margin: 0;
+  color: var(--accent);
+}
+
+/* ---------- BADGES / PILLS ---------- */
 
 .badge-row {
   display: flex;
@@ -126,8 +156,8 @@ body {
   gap: 6px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(15, 118, 110, 0.18);
-  color: var(--accent-strong);
+  background: rgba(155, 185, 155, 0.25); /* timer/sage tone */
+  color: var(--accent);
   font-size: 0.78rem;
   font-weight: 600;
 }
@@ -136,7 +166,7 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 999px;
-  background: var(--accent-strong);
+  background: var(--accent-gold);
 }
 
 .pill {
@@ -144,14 +174,14 @@ body {
   align-items: center;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: rgba(141, 166, 141, 0.22);
+  color: var(--accent);
   font-size: 0.8rem;
   font-weight: 600;
   margin-left: 6px;
 }
 
-/* Breadcrumb */
+/* ---------- BREADCRUMB ---------- */
 
 .breadcrumb {
   font-size: 0.8rem;
@@ -160,7 +190,7 @@ body {
 }
 
 .breadcrumb a {
-  color: var(--accent-strong);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -168,7 +198,7 @@ body {
   text-decoration: underline;
 }
 
-/* Landing page link grid */
+/* ---------- LANDING PAGE CONTENT ---------- */
 
 .section {
   margin-top: 6px;
@@ -177,6 +207,7 @@ body {
 .section h2 {
   font-size: 1.12rem;
   margin-bottom: 6px;
+  color: var(--accent-header);
 }
 
 .section p {
@@ -185,6 +216,7 @@ body {
   margin: 3px 0 10px;
 }
 
+/* Grid of tiles for index.html */
 .link-grid {
   display: grid;
   gap: 12px;
@@ -199,9 +231,9 @@ body {
 
 .link-tile {
   border-radius: 16px;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--card-border);
   padding: 12px 14px;
-  background: rgba(15, 23, 42, 0.94);
+  background: #ffffff;
   text-decoration: none;
   color: var(--text-main);
   display: flex;
@@ -217,6 +249,7 @@ body {
 .link-tile span.label {
   font-size: 0.9rem;
   font-weight: 600;
+  color: var(--accent);
 }
 
 .link-tile span.desc {
@@ -226,63 +259,52 @@ body {
 
 .link-tile:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.9);
-  border-color: var(--accent-strong);
-  background: #020617;
+  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-header);
+  background: #fdfbf7;
 }
 
-/* Support / callouts */
+/* ---------- SUPPORT BOX / CALLOUT ---------- */
 
 .support-box,
 .callout {
   margin-top: 12px;
   padding: 10px 12px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px dashed var(--border-soft);
+  background: var(--accent-soft);
+  border: 1px dashed rgba(103, 87, 70, 0.35);
   font-size: 0.86rem;
   color: var(--text-muted);
 }
 
 .support-box strong,
 .callout strong {
-  color: var(--accent-strong);
+  color: var(--accent);
 }
 
-/* Inner content pages */
-
-.inner-page {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.inner-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.inner-header-title {
-  font-size: 1.35rem;
-  margin: 0;
-}
+/* ---------- CONTENT TYPOGRAPHY (inner pages) ---------- */
 
 .content {
   margin-top: 6px;
   line-height: 1.58;
 }
 
+.content em {
+  color: var(--accent);
+}
+
 .content h2 {
   font-size: 1.12rem;
   margin-top: 18px;
   margin-bottom: 6px;
+  color: var(--accent-header);
 }
 
 .content h3 {
   font-size: 1rem;
   margin-top: 14px;
   margin-bottom: 4px;
+  color: var(--accent);
 }
 
 .content p {
@@ -302,7 +324,7 @@ body {
   margin-bottom: 4px;
 }
 
-/* Footer */
+/* ---------- FOOTER ---------- */
 
 .footer {
   margin-top: 18px;
@@ -315,7 +337,7 @@ body {
 }
 
 .footer a {
-  color: var(--accent-strong);
+  color: var(--accent);
   text-decoration: none;
 }
 
